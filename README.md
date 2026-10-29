@@ -15,6 +15,7 @@ SyncSpace is a production-quality, real-time collaborative workspace web applica
 - **Task Management**: Priorities (`LOW`, `MEDIUM`, `HIGH`, `URGENT`), assignees, tags/labels, due dates, task details drawer, and discussions.
 - **Activity & Auditing**: Automated timeline logs for task creation, movement, assignment, and commenting.
 - **Live Notifications**: In-app notifications with unread counts and real-time push for task assignments and mentions.
+- **Cloudinary Asset Storage**: Stream-based image uploading for user profile avatars and task attachments with automated face-centering, WebP transformation, and PostgreSQL persistence.
 - **Invitation System**: Secure, expiring, single-use invitation tokens with a built-in development fallback.
 - **Polished Dark Aesthetic**: Refined dark charcoal SaaS design with an optional light theme toggle.
 
@@ -149,6 +150,9 @@ TEST_DATABASE_URL="postgresql://postgres@localhost:5433/syncspace_test?schema=pu
 JWT_SECRET=dev-jwt-super-secret-key-at-least-32-chars-long-12345
 COOKIE_NAME=syncspace_token
 COOKIE_SECRET=dev-cookie-secret-key-32-chars-syncspace-2026
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_API_KEY=your_api_key
+CLOUDINARY_API_SECRET=your_api_secret
 ```
 
 **Frontend (`frontend/.env`)**:

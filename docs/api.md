@@ -179,3 +179,43 @@ Base URL: `/api/v1`
 
 - **`POST /api/v1/notifications/read-all`**
   - **Auth**: Required
+
+---
+
+## 7. Cloudinary Uploads & Asset Management
+- **`POST /api/v1/upload/avatar`**
+  - **Auth**: Required
+  - **Content-Type**: `multipart/form-data`
+  - **Form Field**: `avatar` (Image file: JPEG, PNG, WebP, GIF, SVG - max 5 MB)
+  - **Behavior**: Streams image buffer directly to Cloudinary (`syncspace/avatars` folder) with automated face-centered 256x256 crop and quality optimization. Persists `avatarUrl` to `User` model in PostgreSQL.
+  - **Response 200**:
+    ```json
+    {
+      "success": true,
+      "message": "Avatar uploaded and updated successfully.",
+      "data": {
+        "user": { "id": "...", "name": "...", "avatarUrl": "https://res.cloudinary.com/..." },
+        "url": "https://res.cloudinary.com/...",
+        "publicId": "syncspace/avatars/..."
+      }
+    }
+    ```
+
+- **`POST /api/v1/upload/image`**
+  - **Auth**: Required
+  - **Content-Type**: `multipart/form-data`
+  - **Form Field**: `image` (Image file - max 5 MB)
+  - **Behavior**: Uploads image to Cloudinary (`syncspace/attachments` folder) with automatic quality and format optimization.
+  - **Response 200**:
+    ```json
+    {
+      "success": true,
+      "message": "Image uploaded successfully to Cloudinary.",
+      "data": {
+        "url": "https://res.cloudinary.com/...",
+        "publicId": "syncspace/attachments/...",
+        "format": "png",
+        "bytes": 1024
+      }
+    }
+    ```
