@@ -4,6 +4,7 @@ import workspaceRoutes from './workspaceRoutes.js';
 import projectRoutes from './projectRoutes.js';
 import taskRoutes from './taskRoutes.js';
 import notificationRoutes from './notificationRoutes.js';
+import uploadRoutes from './uploadRoutes.js';
 import prisma from '../config/prisma.js';
 
 const router = Router();
@@ -35,5 +36,6 @@ router.use('/workspaces', workspaceRoutes);
 router.use('/projects', projectRoutes);
 router.use('/tasks', taskRoutes);
 router.use('/notifications', notificationRoutes);
+router.use('/upload', uploadRoutes);
 
 export default router;
